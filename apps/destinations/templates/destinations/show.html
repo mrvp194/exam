@@ -1,0 +1,33 @@
+<!<!DOCTYPE html>
+{% load static %}
+<html>
+	<head>
+        <title>Users</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+        <link rel='stylesheet' href="{% static 'destinations/style.css' %}">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	</head>
+	<body>
+        <div id='nav'>
+            <a href="{% url 'destinations:index' %}">Home</a>
+            <a href="{% url 'users:logout' %}">Logout</a>
+        </div>
+        
+        <h1>{{travel.destination}}</h1>
+        <p>Planned By: {{travel.creator.name}}</p>
+        <p>Description: {{travel.desc}}</p>
+        <p>Start Date: {{travel.start}}</p>
+        <p>End Date: {{travel.end}}</p>
+
+        <h1>Other users' joining the trip</h1>
+
+        {% for user in users %}
+        
+        <p>{{user.name}}</p>
+
+        {% endfor %}
+        
+
+
+    </body>
+</html>

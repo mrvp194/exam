@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+	<head>
+        <title>Users</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+        <link rel='stylesheet' href="{% static 'destinations/style.css' %}">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	</head>
+	<body>
+        <div id='nav'>
+            <a href="{% url 'users:logout' %}">Logout</a>
+        </div>
+        <h1>Hello, {{user.name}}</h1>
+        <h2>Your Trip Schedules</h2>
+        <table>
+            <tr>
+                <th>Destination</th>
+                <th>Travel Start Date</th>
+                <th>Travel End Date</th>
+                <th>Plan</th>
+            </tr>
+            {% for travel in travels %}
+            <tr>
+                <td><a href="{% url 'destinations:show' travel.id %}">{{travel.destination}}</a></td>
+                <td>{{travel.start}}</td>
+                <td>{{travel.end}}</td>
+                <td>{{travel.desc}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <h2>Other User's Travel Plans</h2>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Destination</th>
+                <th>Travel Start Date</th>
+                <th>Travel End Date</th>
+                <th>Join?</th>
+            </tr>
+            {% for travel in other_travels %}
+            <tr>
+                <th>{{travel.creator.name}}</th>
+                <th><a href="{% url 'destinations:show' travel.id %}">{{travel.destination}}</a></th>
+                <th>{{travel.start}}</th>
+                <th>{{travel.end}}</th>
+                <th><a href="{% url 'destinations:update' travel.id %}">Join</a></th>
+            </tr>
+            {% endfor %}
+        </table>
+
+        <a href="{% url 'destinations:new' %}">Add Travel Plan</a>
+
+
+    </body>
+</html>

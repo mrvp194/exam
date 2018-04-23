@@ -1,0 +1,33 @@
+/* body {
+    border: 1px solid black;
+} */
+#nav {
+    text-align: right;
+}
+
+#nav a {
+    margin-right: 1%;
+}
+
+body {
+    width: 75%;
+    margin: 0 auto;
+}
+
+table {
+    border: 1px solid black;
+    border-collapse: separate;
+    border-spacing: 1% 1%;
+    margin-bottom: 2%;
+      
+}
+
+tr, td, th {
+    border: 1px solid black;
+    margin: 20px;
+}
+
+h1, h2 {
+    margin-bottom: 2%;
+}
+

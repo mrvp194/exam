@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+	<head>
+        <title>Users</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+        <link rel='stylesheet' href="{% static 'destinations/style.css' %}">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	</head>
+	<body>
+        <div id='nav'>
+            <a href="{% url 'destinations:index' %}">Home</a>
+            <a href="{% url 'users:logout' %}">Logout</a>
+        </div>
+        <h1>Add a Trip</h1>
+        <form action="{% url 'destinations:create' %}" method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                Destination<input class="form-control" type="text" name='destination'>
+                {% if request.session.destination %}
+                <p>{{request.session.destination}}</p>
+                {% endif %}
+                Description<input class="form-control" type="text" name='desc'>
+                {% if request.session.description %}
+                <p>{{request.session.description}}</p>
+                {% endif %}
+                Travel Start Date<input class="form-control" type="date" name='start'>
+                {% if request.session.start %}
+                <p>{{request.session.start}}</p>
+                {% endif %}
+                Travel End Date<input class="form-control" type="date" name='end'>
+                {% if request.session.end %}
+                <p>{{request.session.end}}</p>
+                {% endif %}
+                <input class="form-control" type="submit" value="Add">
+            </div>
+
+        </form>
+        
+
+
+    </body>
+</html>
